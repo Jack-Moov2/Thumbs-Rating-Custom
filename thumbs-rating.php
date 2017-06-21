@@ -375,25 +375,25 @@ if  ( ! function_exists( 'thumbs_rating_top_func' ) ):
 
 		if($thumbs_ratings_top_query->have_posts()) :
 
-			$return .= '<section class="examples">';
+			$return .= '<section>';
 
-				$return .= '<ul class="thumbs-rating-top-list">';
+				$return .= '<ul class="list examples">';
 
 				while($thumbs_ratings_top_query->have_posts()){
 
 					$thumbs_ratings_top_query->the_post();
 
-					$return .= '<li>';
+					$return .= '<li class="examples__item">';
 
 					if ( has_post_thumbnail()) : // Check if Thumbnail exists
 						$thumbnail = get_the_post_thumbnail_url();
 						$thumbnail_id = get_post_thumbnail_id( $post->ID );
 						$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 
-						$return .= '<img src="' . $thumbnail . '" alt="' . $alt .'">';
+						$return .= '<img class="examples__thumbnail" src="' . $thumbnail . '" alt="' . $alt .'" title="Feature image">';
 					endif;
 
-					$return .= '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+					$return .= '<a href="' . get_permalink() . '"><h3>' . get_the_title() . '</h3></a>';
 
 					if( $show_votes == "yes" ){
 
